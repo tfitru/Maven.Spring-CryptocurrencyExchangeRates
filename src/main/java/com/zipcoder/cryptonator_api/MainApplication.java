@@ -1,11 +1,14 @@
 package com.zipcoder.cryptonator_api;
 
+import com.zipcoder.cryptonator_api.domain.Foo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class MainApplication {
@@ -31,7 +34,7 @@ public class MainApplication {
         System.out.println("Fetching object from cryptonator.com");
         System.out.println("Attempting to retrieve object from URI...");
         System.out.println(uriString);
-        Object jsonObject = restTemplate.getForObject(uriString, Object.class);
-        System.out.println(jsonObject.toString());
+        Object[] jsonObject = restTemplate.getForObject(uriString, Object[].class);
+        System.out.println(Arrays.toString(jsonObject));
     }
 }
